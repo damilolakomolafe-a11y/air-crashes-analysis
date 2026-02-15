@@ -1,102 +1,73 @@
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# Air Crashes Analysis (1908–2023)
 
-# Page configuration
-st.set_page_config(page_title="Air Crashes Analysis", layout="wide")
+## Project Overview
 
-st.title("✈ Air Crashes Analysis (1908 – 2023)")
-st.write("An interactive analysis of global air crash data.")
+This project analyzes global air crash data from 1908 to 2023 to identify historical trends, high-risk years, aircraft patterns, geographical distribution, and the relationship between crash frequency and fatalities.
 
-# Load data
-@st.cache_data
-def load_data():
-    df = pd.read_csv("data/Air_Crashes_Full_Data.csv")
-    return df
+The goal is to uncover insights that contribute to aviation safety awareness using data analysis and visualization techniques.
 
-df = load_data()
+---
 
-# Data Cleaning
-df['Fatalities (air)'] = df['Fatalities (air)'].fillna(0)
-df['Aboard'] = df['Aboard'].fillna(0)
-df = df.dropna(subset=['Year'])
-df['Year'] = df['Year'].astype(int)
+## Research Questions
 
-# Sidebar Filters
-st.sidebar.header("Filter Data")
+1. How has the number of air crashes changed over time (1908–2023)?
+2. Which years recorded the highest number of air crashes?
+3. What are the deadliest air crashes in history?
+4. Which aircraft types are most frequently involved in crashes?
+5. Which locations (countries/regions) experience the most air crashes?
+6. Is there a relationship between year and number of fatalities?
 
-year_range = st.sidebar.slider(
-    "Select Year Range",
-    int(df['Year'].min()),
-    int(df['Year'].max()),
-    (2000, 2023)
-)
+---
 
-filtered_df = df[(df['Year'] >= year_range[0]) & (df['Year'] <= year_range[1])]
+## Dataset Information
 
-# ==============================
-# 1. Crashes Per Year
-# ==============================
+- **Time Period:** 1908–2023  
+- **Key Columns:**
+  - Year  
+  - Month  
+  - Day  
+  - Country/Region  
+  - Aircraft  
+  - Operator  
+  - Fatalities (air)  
+  - Aboard  
 
-st.subheader("📈 Number of Crashes Per Year")
+Missing values were cleaned and appropriate preprocessing steps were applied before analysis.
 
-crashes_per_year = filtered_df.groupby('Year').size()
+---
 
-fig1, ax1 = plt.subplots()
-crashes_per_year.plot(ax=ax1)
-ax1.set_xlabel("Year")
-ax1.set_ylabel("Number of Crashes")
+## Tools Used
 
-st.pyplot(fig1)
+- Python  
+- Pandas  
+- NumPy  
+- Matplotlib  
+- Seaborn  
+- Jupyter Notebook  
+- Streamlit  
 
-# ==============================
-# 2. Fatalities Per Year
-# ==============================
+---
 
-st.subheader("💀 Fatalities Per Year")
+## Project Structure
 
-fatalities_per_year = filtered_df.groupby('Year')['Fatalities (air)'].sum()
+```
+Air-Crashes-Analysis-2025/
+│
+├── data/
+│   └── air_crashes.csv
+│
+├── notebook/
+│   └── air_crash_analysis.ipynb
+│
+├── app.py
+├── requirements.txt
+└── README.md
+```
 
-fig2, ax2 = plt.subplots()
-fatalities_per_year.plot(ax=ax2)
-ax2.set_xlabel("Year")
-ax2.set_ylabel("Fatalities")
+└── README.md
 
-st.pyplot(fig2)
 
-# ==============================
-# 3. Top 10 Countries
-# ==============================
 
-st.subheader("🌍 Top 10 Countries with Most Crashes")
-
-top_countries = filtered_df['Country/Region'].value_counts().head(10)
-
-fig3, ax3 = plt.subplots()
-sns.barplot(x=top_countries.values, y=top_countries.index, ax=ax3)
-
-st.pyplot(fig3)
-
-# ==============================
-# 4. Aboard vs Fatalities
-# ==============================
-
-st.subheader("👥 Aboard vs Fatalities")
-
-fig4, ax4 = plt.subplots()
-sns.scatterplot(
-    data=filtered_df,
-    x='Aboard',
-    y='Fatalities (air)',
-    ax=ax4
-)
-
-st.pyplot(fig4)
-
-# ==============================
-# Footer
-# ==============================
 
 st.write("---")
 st.write("Project by Damilola Komolafe | Python Project 2025")
