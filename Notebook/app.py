@@ -9,8 +9,8 @@ st.write("An interactive analysis of global air crash data.")
 
 @st.cache_data
 def load_data():
-   df = pd.read_csv("../data/air_crashes.csv")()
-    
+ df = pd.read_csv("Data/air_crashes.csv")
+
     df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
     df['Fatalities (air)'] = pd.to_numeric(df['Fatalities (air)'], errors='coerce').fillna(0)
     df['Aboard'] = pd.to_numeric(df['Aboard'], errors='coerce').fillna(0)
