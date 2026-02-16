@@ -10,7 +10,7 @@ import seaborn as sns
 st.set_page_config(page_title="Air Crashes Dashboard", layout="wide")
 
 st.title("Global Air Crashes Analytics (1908 - 2023)")
-st.write("Advanced interactive and statistical analysis of global air crash data.")
+st.write("interactive and statistical analysis of global air crash data.")
 
 # ==============================
 # Load Data
