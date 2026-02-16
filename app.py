@@ -25,10 +25,12 @@ df = load_data()
 # ==============================
 # Data Cleaning
 # ==============================
-df['Fatalities (air)'] = pd.to_numeric(df['Fatalities (air)'], errors='coerce').fillna(0)
-df['Aboard'] = pd.to_numeric(df['Aboard'], errors='coerce').fillna(0)
+df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+df['Year'] = df['Date'].dt.year
 
-df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
+df['Fatalities (air)'] = df['Fatalities (air)'].fillna(0)
+df['Aboard'] = df['Aboard'].fillna(0)
+
 df = df.dropna(subset=['Year'])
 df['Year'] = df['Year'].astype(int)
 
@@ -215,4 +217,4 @@ st.download_button(
 # FOOTER
 # ==============================
 st.write("---")
-st.caption("Air Crashes Pro Dashboard | Python + Streamlit + Plotly + Seaborn")
+st.caption("Air Crashes Dashboard | Python + Streamlit + Plotly + Seaborn")
