@@ -7,9 +7,9 @@ import seaborn as sns
 # ==============================
 # Page Config
 # ==============================
-st.set_page_config(page_title="Air Crashes Pro Dashboard", layout="wide")
+st.set_page_config(page_title="Air Crashes Dashboard", layout="wide")
 
-st.title("✈️ Global Air Crashes Pro Analytics (1908 - 2023)")
+st.title("Global Air Crashes Analytics (1908 - 2023)")
 st.write("Advanced interactive and statistical analysis of global air crash data.")
 
 # ==============================
