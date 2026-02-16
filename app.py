@@ -26,14 +26,20 @@ df = load_data()
 # ==============================
 # Data Cleaning
 # ==============================
-df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
-df['Year'] = df['Date'].dt.year
 
-df['Fatalities (air)'] = df['Fatalities (air)'].fillna(0)
-df['Aboard'] = df['Aboard'].fillna(0)
+# Year is numeric
+df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
 
+# Clean numeric columns
+df['Fatalities (air)'] = pd.to_numeric(df['Fatalities (air)'], errors='coerce').fillna(0)
+df['Aboard'] = pd.to_numeric(df['Aboard'], errors='coerce').fillna(0)
+
+# Drop rows with no Year
 df = df.dropna(subset=['Year'])
+
+# Convert Year to int
 df['Year'] = df['Year'].astype(int)
+
 
 # ==============================
 # Sidebar Filters
