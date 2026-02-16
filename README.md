@@ -1,6 +1,5 @@
-# Air Crashes Analysis (1908–2023)
-
-## Project Overview
+✈️ Air Crashes Analysis (1908–2023)
+📌 Project Overview
 
 This project analyzes global air crash data from 1908 to 2023 to identify historical trends, high-risk years, aircraft patterns, geographical distribution, and the relationship between crash frequency and fatalities.
 
@@ -34,23 +33,23 @@ The goal is to uncover insights that contribute to aviation safety awareness usi
 
 Missing values were cleaned and appropriate preprocessing steps were applied before analysis.
 
----
+Tools used;
 
-## Tools Used
+Python
 
-- Python  
-- Pandas  
-- NumPy  
-- Matplotlib  
-- Seaborn  
-- Jupyter Notebook  
-- Streamlit  
+Pandas
 
----
+NumPy
 
-## Project Structure
+Matplotlib
 
-```
+Seaborn
+
+Jupyter Notebook
+
+Streamlit
+
+Project Structure;
 Air-Crashes-Analysis-2025/
 │
 ├── data/
@@ -62,6 +61,4 @@ Air-Crashes-Analysis-2025/
 ├── app.py
 ├── requirements.txt
 └── README.md
-```
-
 
