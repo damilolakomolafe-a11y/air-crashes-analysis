@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Air Crashes Analysis", layout="wide")
 
-st.title("Air Crashes Analysis (1908–2023)")
+st.title("Air Crashes Analysis (1908-2023)")
 st.write("An interactive analysis of global air crash data.")
 
 @st.cache_data
