@@ -17,7 +17,8 @@ st.write("Advanced interactive and statistical analysis of global air crash data
 # ==============================
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Data/air_crashes.csv", encoding="latin1")
+    df = pd.read_csv("Data/air_crashes.csv")
+    st.write(df.columns)
     return df
 
 df = load_data()
