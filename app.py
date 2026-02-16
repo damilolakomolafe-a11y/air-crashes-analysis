@@ -6,6 +6,7 @@ import seaborn as sns
 # Page configuration
 st.set_page_config(page_title="Air Crashes Analysis", layout="wide")
 
+# How has the number of air crash changes over the years?
 st.title("Air Crashes Analysis (1908 - 2023)")
 st.write("An interactive analysis of global air crash data.")
 
